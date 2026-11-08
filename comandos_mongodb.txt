@@ -1,0 +1,104 @@
+
+C:\Users\USER>mongosh
+Current Mongosh Log ID: 6aefebf3af531c48d465b9f9
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.14.1
+Using MongoDB:          9.0.4
+Using Mongosh:          2.14.1
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-11-07T22:26:31.985-05:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2026-11-07T22:26:31.986-05:00: This server is bound to localhost. Remotesystems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+------
+
+test> show dbs
+Escuela   40.00 KiB
+admin     40.00 KiB
+config   108.00 KiB
+local     64.00 KiB
+test> use tienda
+switched to db tienda
+tienda> db.productos.insertOne({producto:"libro1"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6aefec71af531c48d465b9fa')
+}
+tienda> db.productos.insertOne({producto:"libro1",precio:9.99})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6aefec8baf531c48d465b9fb')
+}
+tienda> db.productos.find()
+[
+  { _id: ObjectId('6aefec71af531c48d465b9fa'), producto: 'libro1' },
+  {
+    _id: ObjectId('6aefec8baf531c48d465b9fb'),
+    producto: 'libro1',
+    precio: 9.99
+  }
+]
+tienda> db.productos.find().pretty()
+[
+  { _id: ObjectId('6aefec71af531c48d465b9fa'), producto: 'libro1' },
+  {
+    _id: ObjectId('6aefec8baf531c48d465b9fb'),
+    producto: 'libro1',
+    precio: 9.99
+  }
+]
+tienda> db.productos.insertOne({producto:"libro2",precio:12.99,descripcion:"Un muy buen libro"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6aefececaf531c48d465b9fc')
+}
+tienda> db.productos.find().pretty()
+[
+  { _id: ObjectId('6aefec71af531c48d465b9fa'), producto: 'libro1' },
+  {
+    _id: ObjectId('6aefec8baf531c48d465b9fb'),
+    producto: 'libro1',
+    precio: 9.99
+  },
+  {
+    _id: ObjectId('6aefececaf531c48d465b9fc'),
+    producto: 'libro2',
+    precio: 12.99,
+    descripcion: 'Un muy buen libro'
+  }
+]
+tienda> db.productos.insertOne({producto:"libro2",precio:12.99,descripcion:"Un muy buen libro",detalles:{tapa:"dura",paginas:300}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6aefed72af531c48d465b9fd')
+}
+tienda> db.productos.find().pretty()
+[
+  { _id: ObjectId('6aefec71af531c48d465b9fa'), producto: 'libro1' },
+  {
+    _id: ObjectId('6aefec8baf531c48d465b9fb'),
+    producto: 'libro1',
+    precio: 9.99
+  },
+  {
+    _id: ObjectId('6aefececaf531c48d465b9fc'),
+    producto: 'libro2',
+    precio: 12.99,
+    descripcion: 'Un muy buen libro'
+  },
+  {
+    _id: ObjectId('6aefed72af531c48d465b9fd'),
+    producto: 'libro2',
+    precio: 12.99,
+    descripcion: 'Un muy buen libro',
+    detalles: { tapa: 'dura', paginas: 300 }
+  }
+]
+tienda> history
+[Function (anonymous)]
+tienda>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+tienda>
+
+C:\Users\USER>
