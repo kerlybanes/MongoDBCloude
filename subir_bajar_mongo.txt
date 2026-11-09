@@ -1,0 +1,5 @@
+#Bajar el servicio mongo desde consola
+net stop MongoDb
+
+#Subir el servicio mongo
+mongod -dbpath "C:\Program Files\MongoDB\Server\9.0\data"
