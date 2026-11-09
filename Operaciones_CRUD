@@ -1,0 +1,14 @@
+Create, Read, Update, Delete Mongo DB
+
+db.usuarioDatos.InsertOne({nombre:"Kerly"})
+
+db.usuarioDatos.DeleteOne({nombre:"Kerly"})
+
+db.usuarioDatos.UpdateOne({nombre:"Kerly"}, {$set: {marcador:"borrar"}})
+
+db.usuarioDatos.UpdateMany({}, {$set: {marcador:"borrar"}})
+
+db.usuarioDatos.DeleteMany({marcador:"borrar"})
+
+db.usuarioDatos.find().pretty()
+
