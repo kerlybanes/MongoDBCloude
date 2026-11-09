@@ -12,3 +12,51 @@ db.usuarioDatos.DeleteMany({marcador:"borrar"})
 
 db.usuarioDatos.find().pretty()
 
+db.usuarioDatos.InsertMany([
+  {
+    "nombre": "Juan",
+    "apellidos": "Gonzalez",
+    "edad": 25,
+    "alta": true,
+    "dirección":
+    { 
+      "ciudad": "Barcelona"
+    }
+  },
+  {
+    "nombre": "Felipe",
+    "apellidos": "Sanchez",
+    "edad": 27,
+    "alta": false,
+    "dirección":
+    { 
+      "ciudad": "Madrid"
+    }
+  }
+])
+
+db.usuarioDatos.find({"nombre": "Felipe"}).pretty()
+
+db.usuarioDatos.find({edad: {$gt:24}}).pretty() #mayorque $gt=Greater Than
+db.usuarioDatos.findOne({edad: {$gt:24}}) #mayorque, pero solo devuelve 1
+
+db.usuarioDatos.UpdateOne({_id:ObjectId("12343")},{$set: {alta:false}})
+db.usuarioDatos.Update({_id:ObjectId("12343")},{alta:false})
+
+db.usuarioDatos.ReplaceOne({_id:ObjectId("12343")},{
+    "nombre": "Felipe",
+    "apellidos": "Sanchez",
+    "edad": 27,
+    "alta": false,
+    "dirección":
+    { 
+      "ciudad": "Madrid"
+    }
+  })
+
+
+
+
+
+
+
